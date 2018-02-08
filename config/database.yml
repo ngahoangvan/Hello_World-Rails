@@ -1,0 +1,37 @@
+# MySql2 verion 0.4.10
+#   gem install mysql -v 0.4.10
+#
+#   Ensure the  MySql2 verion 0.4.10 gem is defined in your Gemfile
+#   gem 'mysql2', '~> 0.4.10'
+#
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
+
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 123123
+  socket: /var/run/mysqld/mysqld.sock
+
+
+development:
+  <<: *default
+  database: login_app_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: login_app_test
+
+production:
+  <<: *default
+  database: login_app_production
+  username: hello_world
+  password: 123123
